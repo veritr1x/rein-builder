@@ -1,5 +1,8 @@
 export function calcAgility() {
   let charBaseAgiNode = document.getElementById("cba") as HTMLInputElement;
+  let charFlatAgiPassiveNode = document.getElementById(
+    "cfap"
+  ) as HTMLInputElement;
   let charTimedAgiPassiveNode = document.getElementById(
     "ctap"
   ) as HTMLInputElement;
@@ -33,6 +36,7 @@ export function calcAgility() {
   ) as HTMLInputElement;
 
   let charBaseAgi = parseInt(charBaseAgiNode.value);
+  let charFlatAgiPassive = parseFloat(charFlatAgiPassiveNode.value) / 100;
   let charTimedAgiPassive = parseFloat(charTimedAgiPassiveNode.value) / 100;
 
   let charRankFlatTotal = parseInt(charRankFlatTotalNode.value);
@@ -62,16 +66,26 @@ export function calcAgility() {
     flatMemory2Agi +
     flatMemory3Agi +
     charBaseAgi * pctMemoryAgi;
-  const totalPassiveAgi =
+
+  const totalWeaponFlatPassiveAgi =
     charBaseAgi *
     (weapon1FlatAgiPassive + weapon2FlatAgiPassive + weapon3FlatAgiPassive);
-  const totalAgi = charBaseAgi + totalPassiveAgi + totalMemoryAgi;
+
+  const totalFlatPassiveAgi = charBaseAgi * charFlatAgiPassive;
+
+  const totalAgi =
+    charBaseAgi +
+    totalFlatPassiveAgi +
+    totalWeaponFlatPassiveAgi +
+    totalMemoryAgi;
   const totalAgiWithRank = totalAgi + charRankAgi;
+
   const totalTimedPassiveAgi =
     charTimedAgiPassive +
     weapon1TimedAgiPassive +
     weapon2TimedAgiPassive +
     weapon3TimedAgiPassive;
+
   const totalInCombatAgi =
     totalAgiWithRank + totalAgiWithRank * totalTimedPassiveAgi;
 

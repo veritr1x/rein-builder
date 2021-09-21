@@ -42,7 +42,14 @@ const App = () => {
                     className="leading-tight focus:outline-none focus:shadow-outline mx-4 w-10 border rounded"
                     defaultValue="1000"></input>
                 </div>
-
+                <div>
+                  <span>Character flat agility passive</span>
+                  <input
+                    id="cfap"
+                    type="text"
+                    className="leading-tight focus:outline-none focus:shadow-outline mx-4 w-10 border rounded"
+                    defaultValue="0"></input>
+                </div>
                 <div>
                   <span>Character timed agility passive</span>
                   <input
